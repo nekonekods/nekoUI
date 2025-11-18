@@ -1,0 +1,22 @@
+DebugConfig/
+
+Hardware/*
+
+!Hardware/OLED.c
+!Hardware/OLED.h
+!Hardware/OLED_Data.c
+!Hardware/OLED_Data.h
+!Hardware/Ticker.c
+!Hardware/Ticker.h
+
+
+Objects/
+
+.idea/
+cmake-build-*/
+
+*.uvguix.*
+new4.uvoptx
+
+git config user.name "nekods"
+git config user.email "nekods@qq.com"
