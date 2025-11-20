@@ -14,9 +14,7 @@ Objects/
 
 .idea/
 cmake-build-*/
+Listings/*
 
 *.uvguix.*
 new4.uvoptx
-
-git config user.name "nekods"
-git config user.email "nekods@qq.com"

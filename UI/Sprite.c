@@ -24,18 +24,18 @@ void Sprite_Update(UIComponent* sprite) {
     last_time = GetTick();
 
 
-    // ÏÈ¸üĞÂËÙ¶È£¨°üÀ¨¼ÓËÙ¶ÈÓ°Ïì£©
+    // å…ˆæ›´æ–°é€Ÿåº¦ï¼ˆåŒ…æ‹¬åŠ é€Ÿåº¦å½±å“ï¼‰
     ARGS->v_y += ARGS->a_y * delta_time / 1000;
     ARGS->v_x += ARGS->a_x * delta_time / 1000;
 
-    // ÔÙ¸üĞÂÎ»ÖÃ
+    // å†æ›´æ–°ä½ç½®
     ARGS->Y += ARGS->v_y * delta_time / 1000;
     ARGS->X += ARGS->v_x * delta_time / 1000;
 
-// #define reduce 1.02  // 1.02ÎªÎŞË¥¼õ
+// #define reduce 1.02  // 1.02ä¸ºæ— è¡°å‡
 //     if (ARGS->Y > OLED_HEIGHT) {
-//         ARGS->Y = OLED_HEIGHT;  // Ğ£ÕıÎ»ÖÃ£¬±ÜÃâÉîÈëÆÁÄ»ÏÂ·½
-//         ARGS->v_y = -ARGS->v_y * reduce;  // ·´µ¯²¢ËğÊ§²¿·ÖÄÜÁ¿
+//         ARGS->Y = OLED_HEIGHT;  // æ ¡æ­£ä½ç½®ï¼Œé¿å…æ·±å…¥å±å¹•ä¸‹æ–¹
+//         ARGS->v_y = -ARGS->v_y * reduce;  // åå¼¹å¹¶æŸå¤±éƒ¨åˆ†èƒ½é‡
 //     }
 // #undef reduce
 

@@ -9,24 +9,24 @@
 #include "ui_core.h"
 
 /**
- * @brief ÏûÏ¢¿ò²ÎÊı½á¹¹Ìå
- * @param X ×é¼ş×óÉÏ½ÇX×ø±ê
- * @param Y ×é¼ş×óÉÏ½ÇY×ø±ê
- * @param Width ×é¼ş¿í¶È
- * @param Height ×é¼ş¸ß¶È
- * @param TextWidth ÎÄ±¾¿í¶È
+ * @brief æ¶ˆæ¯æ¡†å‚æ•°ç»“æ„ä½“
+ * @param X ç»„ä»¶å·¦ä¸Šè§’Xåæ ‡
+ * @param Y ç»„ä»¶å·¦ä¸Šè§’Yåæ ‡
+ * @param Width ç»„ä»¶å®½åº¦
+ * @param Height ç»„ä»¶é«˜åº¦
+ * @param TextWidth æ–‡æœ¬å®½åº¦
  */
 
 typedef struct {
-    int16_t X;    //¾²Ì¬£¬±»¶¯²ÎÊı
-    int16_t Y;    //¶¯»­£¬±»¶¯²ÎÊı
-    uint16_t Width;  //¾²Ì¬£¬±»¶¯²ÎÊı
-    uint16_t Height; //¾²Ì¬£¬±»¶¯²ÎÊı
-    uint16_t TextMaxWidth;  //¾²Ì¬£¬±»¶¯
-    char* Text;   //¾²Ì¬£¬Ö÷¶¯
-    uint8_t* LinePtrs;   //¾²Ì¬£¬±»¶¯
-    uint8_t* LineWidth;  //¾²Ì¬£¬±»¶¯
-    uint8_t LinePtrNum;  //¾²Ì¬£¬±»¶¯
+    int16_t X;    //é™æ€ï¼Œè¢«åŠ¨å‚æ•°
+    int16_t Y;    //åŠ¨ç”»ï¼Œè¢«åŠ¨å‚æ•°
+    uint16_t Width;  //é™æ€ï¼Œè¢«åŠ¨å‚æ•°
+    uint16_t Height; //é™æ€ï¼Œè¢«åŠ¨å‚æ•°
+    uint16_t TextMaxWidth;  //é™æ€ï¼Œè¢«åŠ¨
+    char* Text;   //é™æ€ï¼Œä¸»åŠ¨
+    uint8_t* LinePtrs;   //é™æ€ï¼Œè¢«åŠ¨
+    uint8_t* LineWidth;  //é™æ€ï¼Œè¢«åŠ¨
+    uint8_t LinePtrNum;  //é™æ€ï¼Œè¢«åŠ¨
 } UI_MsgBoxArgs;
 
 UIComponent *MsgBox_Create(const char *text);

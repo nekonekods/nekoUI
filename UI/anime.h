@@ -13,23 +13,23 @@ typedef struct UIComponent UIComponent;
 
 
 /**
- * @brief ¶¯»­½á¹¹Ìå
- * @param UpdateArgsNum ¶¯»­¸üĞÂ²ÎÊı¸öÊı
- * @param UpdateArgs ¶¯»­¸üĞÂ²ÎÊıÁĞ±í
- * @param UpdateArgSt_Ed ¶¯»­¸üĞÂ²ÎÊıÆğÊ¼ºÍÖÕÖ¹Î»ÖÃ
- * @param UpdateFuncs ¶¯»­¸üĞÂÇúÏßº¯ÊıÁĞ±í
- * @param UpdateOtherArgs Ö÷²ÎÊı¸üĞÂºó£¬×Ó²ÎÊı¸üĞÂº¯Êı
- * @param start_tick ¶¯»­¿ªÊ¼Ê±¼ä£¨µÎ´ğÊı£©
- * @param duration ¶¯»­×ÜÊ±³¤£¨µÎ´ğÊı£©
+ * @brief åŠ¨ç”»ç»“æ„ä½“
+ * @param UpdateArgsNum åŠ¨ç”»æ›´æ–°å‚æ•°ä¸ªæ•°
+ * @param UpdateArgs åŠ¨ç”»æ›´æ–°å‚æ•°åˆ—è¡¨
+ * @param UpdateArgSt_Ed åŠ¨ç”»æ›´æ–°å‚æ•°èµ·å§‹å’Œç»ˆæ­¢ä½ç½®
+ * @param UpdateFuncs åŠ¨ç”»æ›´æ–°æ›²çº¿å‡½æ•°åˆ—è¡¨
+ * @param UpdateOtherArgs ä¸»å‚æ•°æ›´æ–°åï¼Œå­å‚æ•°æ›´æ–°å‡½æ•°
+ * @param start_tick åŠ¨ç”»å¼€å§‹æ—¶é—´ï¼ˆæ»´ç­”æ•°ï¼‰
+ * @param duration åŠ¨ç”»æ€»æ—¶é•¿ï¼ˆæ»´ç­”æ•°ï¼‰
  *
  * */
 typedef struct UIAnimation{
-    uint8_t UpdateArgsNum; //¶¯»­¸üĞÂ²ÎÊı¸öÊı
-    int16_t **UpdateArgs; //¶¯»­¸üĞÂ²ÎÊıÁĞ±í
-    int16_t (*UpdateArgSt_Ed)[2]; //¶¯»­¸üĞÂ²ÎÊıÆğÊ¼ºÍÖÕÖ¹Î»ÖÃ
-    UIAnimationFunc* UpdateFuncs; //¶¯»­¸üĞÂÇúÏßº¯ÊıÁĞ±í
-    uint32_t start_tick;    // ¶¯»­¿ªÊ¼Ê±¼ä£¨µÎ´ğÊı£©
-    uint32_t duration;    // ¶¯»­×ÜÊ±³¤£¨µÎ´ğÊı£©
+    uint8_t UpdateArgsNum; //åŠ¨ç”»æ›´æ–°å‚æ•°ä¸ªæ•°
+    int16_t **UpdateArgs; //åŠ¨ç”»æ›´æ–°å‚æ•°åˆ—è¡¨
+    int16_t (*UpdateArgSt_Ed)[2]; //åŠ¨ç”»æ›´æ–°å‚æ•°èµ·å§‹å’Œç»ˆæ­¢ä½ç½®
+    UIAnimationFunc* UpdateFuncs; //åŠ¨ç”»æ›´æ–°æ›²çº¿å‡½æ•°åˆ—è¡¨
+    uint32_t start_tick;    // åŠ¨ç”»å¼€å§‹æ—¶é—´ï¼ˆæ»´ç­”æ•°ï¼‰
+    uint32_t duration;    // åŠ¨ç”»æ€»æ—¶é•¿ï¼ˆæ»´ç­”æ•°ï¼‰
     void (*StartFunc)(UIComponent*);
     void (*FinishedFunc)(UIComponent*);
 

@@ -5,7 +5,7 @@
 
 /**
  * @file toast.c
- * @brief List×é¼þÊµÏÖÎÄ¼þ
+ * @brief Listç»„ä»¶å®žçŽ°æ–‡ä»¶
  */
 
 #include <string.h>
@@ -31,7 +31,7 @@ uint8_t List_LoadAppearAnime(UIComponent *);
 
 uint8_t List_LoadDisappearAnime(UIComponent *);
 
-// List×é¼þ»æÖÆº¯Êý
+// Listç»„ä»¶ç»˜åˆ¶å‡½æ•°
 void List_Draw(UIComponent *component) {
     const UI_ListArgs *args = (const UI_ListArgs *) component->args;
 
@@ -42,14 +42,14 @@ void List_Draw(UIComponent *component) {
     OLED_DrawLine(args->line_distance,0,args->line_distance,OLED_HEIGHT);
     OLED_DrawLine(OLED_WIDTH-args->line_distance,0,OLED_WIDTH-args->line_distance,OLED_HEIGHT);
 
-    // »æÖÆListÎÄ±¾£¨¾ÓÖÐÏÔÊ¾£©
+    // ç»˜åˆ¶Listæ–‡æœ¬ï¼ˆå±…ä¸­æ˜¾ç¤ºï¼‰
     //    OLED_ShowString(args->X + TOAST_HOR_MARGIN, args->Y + TOAST_VER_MARGIN, args->Text, OLED_8X16);
     for (int i = 0; i < args->itemNum; i++) {
-        if (i >= args->itemNum) {  //ÏÔÊ¾ÍêÁË
+        if (i >= args->itemNum) {  //æ˜¾ç¤ºå®Œäº†
             break;
         }
-        int8_t thisY = args->Y + (args->each_height - 16) / 2 + args->each_height * i;  // (args->each_height - 16) ÊÇÉÏ±ßÔµ¿í
-        if(thisY < -args->each_height || thisY > OLED_HEIGHT){   //³¬¹ýÆÁÄ»µÄ²»äÖÈ¾
+        int8_t thisY = args->Y + (args->each_height - 16) / 2 + args->each_height * i;  // (args->each_height - 16) æ˜¯ä¸Šè¾¹ç¼˜å®½
+        if(thisY < -args->each_height || thisY > OLED_HEIGHT){   //è¶…è¿‡å±å¹•çš„ä¸æ¸²æŸ“
             continue;
         }
         OLED_ShowString(args->X + LIST_LEFT_PADDING, thisY,
@@ -63,7 +63,7 @@ void List_Draw(UIComponent *component) {
     set_color(1);
 }
 
-// List×é¼þÏú»Ùº¯Êý
+// Listç»„ä»¶é”€æ¯å‡½æ•°
 void List_Destroy(UIComponent *list) {
     UI_ListArgs *args = (UI_ListArgs *) list->args;
     for (int i = 0; i < args->itemNum; i++) {
@@ -79,10 +79,10 @@ void List_Destroy(UIComponent *list) {
 }
 
 /**
- * @warning ÐëÈ·±£ items ÊÇÒ»¸ö³£×¤±äÁ¿¡£
+ * @warning é¡»ç¡®ä¿ items æ˜¯ä¸€ä¸ªå¸¸é©»å˜é‡ã€‚
  * */
 UIComponent *List_Create(uint8_t itemNum,void (*confirm_Func)(UIComponent *list), String *items) {
-    // ·ÖÅä×é¼þÄÚ´æ
+    // åˆ†é…ç»„ä»¶å†…å­˜
     UIComponent *list = (UIComponent *) malloc(sizeof(UIComponent));  // auto free
     UI_ListArgs *args = (UI_ListArgs *) malloc(sizeof(UI_ListArgs));  // remember free
     uint8_t *itemWidth = (uint8_t *) malloc(sizeof(uint8_t) * itemNum);    // need free 1 by 1
@@ -102,7 +102,7 @@ UIComponent *List_Create(uint8_t itemNum,void (*confirm_Func)(UIComponent *list)
         itemWidth[i] = OLED_getStringWidth(items[i]);
     }
 
-    // ÉèÖÃ»Øµ÷º¯Êý
+    // è®¾ç½®å›žè°ƒå‡½æ•°
     list->state = UI_STATE_NORMAL;
     list->draw_func = List_Draw;
     list->destroy_func = List_Destroy;
@@ -133,7 +133,7 @@ UIComponent *List_Create(uint8_t itemNum,void (*confirm_Func)(UIComponent *list)
 }
 
 uint8_t List_LoadAppearAnime(UIComponent *list) {
-    // ¶¨Òå¶¯»­ÊôÐÔ
+    // å®šä¹‰åŠ¨ç”»å±žæ€§
     UI_ListArgs *args = (UI_ListArgs *) list->args;
     int16_t *updateArgs[] = {
             &(args->Y),
@@ -172,7 +172,7 @@ uint8_t List_LoadAppearAnime(UIComponent *list) {
 }
 
 uint8_t List_LoadDisappearAnime(UIComponent *list) {
-    // ¶¨Òå¶¯»­ÊôÐÔ
+    // å®šä¹‰åŠ¨ç”»å±žæ€§
     UI_ListArgs *args = (UI_ListArgs *) list->args;
     int16_t *updateArgs[] = {
             &(args->Y),
@@ -238,8 +238,8 @@ void List_ShakeBox(UIComponent *list) {
 }
 
 void List_row(UIComponent *list, int8_t dir, int8_t width) {
-    // ÉÏ¹ö£ºÖ´ÐÐ£¨ÏÂÒÆ£©
-    // ÏÂ¹ö£º{À©Õ¹}£¬Ö´ÐÐ£¨ÉÏÒÆ£©£¬{ÒÆ±ê£¬»Ø¸´ÍØÕ¹}
+    // ä¸Šæ»šï¼šæ‰§è¡Œï¼ˆä¸‹ç§»ï¼‰
+    // ä¸‹æ»šï¼š{æ‰©å±•}ï¼Œæ‰§è¡Œï¼ˆä¸Šç§»ï¼‰ï¼Œ{ç§»æ ‡ï¼Œå›žå¤æ‹“å±•}
 
     if (!list) return;
     UI_ListArgs *args = (UI_ListArgs *) list->args;
@@ -271,9 +271,9 @@ void List_row(UIComponent *list, int8_t dir, int8_t width) {
         if (list->animation == NULL) {
             return;
         }
-    } else {  //½ö×ö²ÎÊýµÄµ÷Õû
+    } else {  //ä»…åšå‚æ•°çš„è°ƒæ•´
         args->List_row_anime->UpdateArgSt_Ed[0][0] = args->Y;
-        args->List_row_anime->UpdateArgSt_Ed[0][1] += dir * args->each_height;//Ö»ÊÇ°ÑÆðµãÏòÉÏÌ§ÁË£¬ÖÕµã»¹ÊÇÄÇ¸öÎ»ÖÃ¡£
+        args->List_row_anime->UpdateArgSt_Ed[0][1] += dir * args->each_height;//åªæ˜¯æŠŠèµ·ç‚¹å‘ä¸ŠæŠ¬äº†ï¼Œç»ˆç‚¹è¿˜æ˜¯é‚£ä¸ªä½ç½®ã€‚
         args->List_row_anime->UpdateArgSt_Ed[1][0] = args->sel_box_width;
         args->List_row_anime->UpdateArgSt_Ed[1][1] = width;
         list->animation = args->List_row_anime;
@@ -313,7 +313,7 @@ void List_sel_box_move(UIComponent *list, int8_t dir, int8_t width) {
         if (list->animation == NULL) {
             return;
         }
-    } else {  //½ö×ö²ÎÊýµÄµ÷Õû
+    } else {  //ä»…åšå‚æ•°çš„è°ƒæ•´
         args->List_box_mov_anime->UpdateArgSt_Ed[0][0] = args->sel_box_Y;
         args->List_box_mov_anime->UpdateArgSt_Ed[0][1] += dir * args->each_height;
         args->List_box_mov_anime->UpdateArgSt_Ed[1][0] = args->sel_box_width;
@@ -345,7 +345,7 @@ UIComponent *List_Generate(uint8_t itemNum,void (*confirm_Func)(UIComponent *lis
     String str;
     va_start(arg, confirm_Func);
     for (int i = 0; i < itemNum; i++) {
-        str = va_arg(arg, String);   //Ô­Ê¼Êý¾Ý
+        str = va_arg(arg, String);   //åŽŸå§‹æ•°æ®
         items[i] = malloc(sizeof(char) * strlen(str) + 1);  //free first
         if (items[i] == NULL) {
             for (int j = 0; j < i; j++) {
@@ -364,18 +364,18 @@ UIComponent *List_Generate(uint8_t itemNum,void (*confirm_Func)(UIComponent *lis
 uint8_t List_prv(UIComponent *list) {
     if(!list) return 0;
     UI_ListArgs *args = (UI_ListArgs *) list->args;
-    if (args->selected_index == 0) { //×îÉÏÃæ£¬²»¶¯
+    if (args->selected_index == 0) { //æœ€ä¸Šé¢ï¼Œä¸åŠ¨
         List_ShakeBox(list);
         return 0;
     } else if (args->selected_index == args->firstIndex + 1 && args->firstIndex != 0) {
-        //µ±Ç°Ò³ÃæµÄµÚ¶þ¸ö£¬ÇÒÃ»¶¥Í·
+        //å½“å‰é¡µé¢çš„ç¬¬äºŒä¸ªï¼Œä¸”æ²¡é¡¶å¤´
         args->selected_index--;
         args->firstIndex--;
-        //sel_box±ä»»¿í¶È£¬ÁÐ±íÏÂ¹ö
+        //sel_boxå˜æ¢å®½åº¦ï¼Œåˆ—è¡¨ä¸‹æ»š
         List_row(list, DOWN, args->itemWidth[args->selected_index]);
     } else {
         args->selected_index--;
-        //sel_boxÏòÉÏ×ß
+        //sel_boxå‘ä¸Šèµ°
         List_sel_box_move(list, UP, args->itemWidth[args->selected_index]);
     }
 }
@@ -383,18 +383,18 @@ uint8_t List_prv(UIComponent *list) {
 uint8_t List_nxt(UIComponent *list) {
     if(!list) return 0;
     UI_ListArgs *args = (UI_ListArgs *) list->args;
-    if (args->selected_index == args->itemNum - 1) { //²»¶¯
+    if (args->selected_index == args->itemNum - 1) { //ä¸åŠ¨
         List_ShakeBox(list);
         return 0;
-    } else if (args->selected_index == args->firstIndex + LIST_SHOW_NUM -2 && args->firstIndex+ LIST_SHOW_NUM  != args->itemNum  ) {   //Í¬Ê±¼õ1£¬¿ÉÒÔ²»ÓÃ¼õ
-        //µ±Ç°Ò³ÃæµÄµÚ¶þ¸ö£¬ÇÒÃ»¶¥Í·
+    } else if (args->selected_index == args->firstIndex + LIST_SHOW_NUM -2 && args->firstIndex+ LIST_SHOW_NUM  != args->itemNum  ) {   //åŒæ—¶å‡1ï¼Œå¯ä»¥ä¸ç”¨å‡
+        //å½“å‰é¡µé¢çš„ç¬¬äºŒä¸ªï¼Œä¸”æ²¡é¡¶å¤´
         args->selected_index++;
         args->firstIndex++;
-        //sel_box±ä»»¿í¶È£¬ÁÐ±íÉÏ¹ö
+        //sel_boxå˜æ¢å®½åº¦ï¼Œåˆ—è¡¨ä¸Šæ»š
         List_row(list, UP, args->itemWidth[args->selected_index]);
     } else {
         args->selected_index++;
-        //sel_boxÏòÏÂ×ß
+        //sel_boxå‘ä¸‹èµ°
         List_sel_box_move(list, DOWN, args->itemWidth[args->selected_index]);
     }
 }

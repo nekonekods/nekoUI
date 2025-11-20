@@ -3,11 +3,11 @@
 #include "stm32f10x_tim.h"
 #include "stm32f10x_rcc.h"
 
-/* ¶¨ÒåÈ«¾Ö±äÁ¿´æ´¢ÏµÍ³Ê±ÖÓµÎ´ğÊı */
+/* å®šä¹‰å…¨å±€å˜é‡å­˜å‚¨ç³»ç»Ÿæ—¶é’Ÿæ»´ç­”æ•° */
 static __IO uint32_t uwTick = 0;
 
 /**
-  * @brief  ³õÊ¼»¯¶¨Ê±Æ÷×÷ÎªÏµÍ³Ê±»ù£¨±£³Ö²»±ä£©
+  * @brief  åˆå§‹åŒ–å®šæ—¶å™¨ä½œä¸ºç³»ç»Ÿæ—¶åŸºï¼ˆä¿æŒä¸å˜ï¼‰
   */
 void Ticker_Init(void)
 {
@@ -16,8 +16,8 @@ void Ticker_Init(void)
 
     RCC_APB1PeriphClockCmd(TICK_TIMER_CLK, ENABLE);
 
-    TIM_TimeBaseStructure.TIM_Period = 1000 - 1;    // 1msÖĞ¶ÏÒ»´Î
-    TIM_TimeBaseStructure.TIM_Prescaler = 72 - 1;   // 72MHz/72=1MHz¼ÆÊıÆµÂÊ
+    TIM_TimeBaseStructure.TIM_Period = 1000 - 1;    // 1msä¸­æ–­ä¸€æ¬¡
+    TIM_TimeBaseStructure.TIM_Prescaler = 72 - 1;   // 72MHz/72=1MHzè®¡æ•°é¢‘ç‡
     TIM_TimeBaseStructure.TIM_ClockDivision = 0;
     TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
     TIM_TimeBaseInit(TICK_TIMER, &TIM_TimeBaseStructure);
@@ -34,7 +34,7 @@ void Ticker_Init(void)
 }
 
 /**
-  * @brief  »ñÈ¡µ±Ç°ÏµÍ³µÎ´ğÊı
+  * @brief  è·å–å½“å‰ç³»ç»Ÿæ»´ç­”æ•°
   */
 uint32_t GetTick(void)
 {
@@ -42,7 +42,7 @@ uint32_t GetTick(void)
 }
 
 /**
-  * @brief  ¶¨Ê±Æ÷ÖĞ¶Ï´¦Àíº¯Êı
+  * @brief  å®šæ—¶å™¨ä¸­æ–­å¤„ç†å‡½æ•°
   */
 void TICK_TIMER_IRQHandler(void)
 {
@@ -54,7 +54,7 @@ void TICK_TIMER_IRQHandler(void)
 }
 
 /**
-  * @brief  ×èÈûÊ½ºÁÃëÑÓÊ±
+  * @brief  é˜»å¡å¼æ¯«ç§’å»¶æ—¶
   */
 void Delay_MS(uint32_t ms)
 {

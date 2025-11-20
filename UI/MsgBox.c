@@ -1,6 +1,6 @@
 /**
  * @file MsgBox.c
- * @brief MsgBox×é¼şÊµÏÖÎÄ¼ş
+ * @brief MsgBoxç»„ä»¶å®ç°æ–‡ä»¶
  */
 
 #include <anime.h>
@@ -31,18 +31,18 @@ uint8_t MsgBox_LoadDisappearAnime(UIComponent *);
 
 void UI_StartAnime(UIComponent *);
 
-// MsgBox×é¼ş»æÖÆº¯Êı
+// MsgBoxç»„ä»¶ç»˜åˆ¶å‡½æ•°
 void MsgBox_Draw(UIComponent *box) {
     const UI_MsgBoxArgs *args = (const UI_MsgBoxArgs *) box->args;
 
     if (!args) return;
     OLED_ClearArea(args->X, args->Y,
                    args->Width, args->Height);
-    // »æÖÆToast±³¾°
+    // ç»˜åˆ¶ToastèƒŒæ™¯
     //    OLED_DrawRoundedRect(args->X, args->Y,args->Width, args->Height, 7,0);
     OLED_DrawRectangle(args->X, args->Y, args->Width, args->Height, 0);
 
-    // »æÖÆToastÎÄ±¾£¨¾ÓÖĞÏÔÊ¾£©
+    // ç»˜åˆ¶Toastæ–‡æœ¬ï¼ˆå±…ä¸­æ˜¾ç¤ºï¼‰
     //    OLED_ShowString(args->X + TOAST_HOR_MARGIN, args->Y + TOAST_VER_MARGIN, args->Text, OLED_8X16);
     for (int i = 0; i < args->LinePtrNum; i++) {
         OLED_ShowString((OLED_WIDTH - args->LineWidth[i]) / 2, args->Y + TOAST_VER_MARGIN + 16 * i,
@@ -50,7 +50,7 @@ void MsgBox_Draw(UIComponent *box) {
     }
 }
 
-// MsgBox×é¼şÏú»Ùº¯Êı
+// MsgBoxç»„ä»¶é”€æ¯å‡½æ•°
 void MsgBox_Destroy(UIComponent *box) {
     free(((UI_MsgBoxArgs *) box->args)->LinePtrs);
     free(((UI_MsgBoxArgs *) box->args)->Text);
@@ -61,13 +61,13 @@ void MsgBox_Destroy(UIComponent *box) {
 }
 
 /**
- * @brief ¸üĞÂÏûÏ¢¿òÎÄ±¾£¨raw£©
- * @param box ÏûÏ¢¿ò×é¼ş
- * @param text ÒªÏÔÊ¾µÄÎÄ±¾
- * @return 0 Ê§°Ü 1 ³É¹¦
+ * @brief æ›´æ–°æ¶ˆæ¯æ¡†æ–‡æœ¬ï¼ˆrawï¼‰
+ * @param box æ¶ˆæ¯æ¡†ç»„ä»¶
+ * @param text è¦æ˜¾ç¤ºçš„æ–‡æœ¬
+ * @return 0 å¤±è´¥ 1 æˆåŠŸ
  */
 uint8_t rMsgBox_UpdateText(UIComponent *box, const char *text) {
-    char *text_copy = malloc(strlen(text) + 1); //Òª·ÖÅä×Ö·û´®´óĞ¡µÄ¿Õ¼ä
+    char *text_copy = malloc(strlen(text) + 1); //è¦åˆ†é…å­—ç¬¦ä¸²å¤§å°çš„ç©ºé—´
     uint8_t *strPtr = malloc(sizeof(uint8_t) * TOAST_MAX_LINES);
     uint8_t *strWthPtr = malloc(sizeof(uint8_t) * TOAST_MAX_LINES);
     if (!text_copy || !strPtr || !strWthPtr) {
@@ -76,15 +76,15 @@ uint8_t rMsgBox_UpdateText(UIComponent *box, const char *text) {
         free(strWthPtr);
         return 0;
     }
-    // ¸´ÖÆÎÄ±¾
+    // å¤åˆ¶æ–‡æœ¬
     strcpy(text_copy, text);
-    // ÉèÖÃToastÊôĞÔ
+    // è®¾ç½®Toastå±æ€§
     int8_t num = 1;
     strPtr[0] = 0;
     int8_t len = strlen(text_copy);
     for (int i = 0; i < len && num < TOAST_MAX_LINES; i++) {
         if (text_copy[i] == '\n') {
-            //½«»Ø³µ×ªÒåÎª¶à¸ö×Ö·û´®
+            //å°†å›è½¦è½¬ä¹‰ä¸ºå¤šä¸ªå­—ç¬¦ä¸²
             text_copy[i] = '\0';
             strPtr[num] = i + 1;
             num++;
@@ -141,7 +141,7 @@ uint8_t rMsgBox_UpdateText(UIComponent *box, const char *text) {
 }
 
 UIComponent *MsgBox_Create(const char *text) {
-    // ·ÖÅä×é¼şÄÚ´æ
+    // åˆ†é…ç»„ä»¶å†…å­˜
     UIComponent *box = malloc(sizeof(UIComponent));
     UI_MsgBoxArgs *args = malloc(sizeof(UI_MsgBoxArgs));
 
@@ -154,7 +154,7 @@ UIComponent *MsgBox_Create(const char *text) {
     memset(box, 0, sizeof(UIComponent));
     memset(args, 0, sizeof(UI_MsgBoxArgs));
 
-    // ÉèÖÃ»Øµ÷º¯Êı
+    // è®¾ç½®å›è°ƒå‡½æ•°
     box->state = UI_STATE_NORMAL;
     box->draw_func = MsgBox_Draw;
     box->destroy_func = MsgBox_Destroy;
@@ -183,12 +183,12 @@ void MsgBox_AppearFinFunc(UIComponent *box) {
 }
 
 uint8_t MsgBox_LoadAppearAnime(UIComponent *toast) {
-    // ¶¨Òå¶¯»­ÊôĞÔ
+    // å®šä¹‰åŠ¨ç”»å±æ€§
     int16_t *updateArgs[] = {&(((UI_MsgBoxArgs *) toast->args)->Y)};
     st_ed_g updateArgSt_Ed[] = {
-        {OLED_HEIGHT, ((UI_MsgBoxArgs *) toast->args)->Y} //ÕâÀïÓĞµãÈÆ£¬ÒòÎª³õÊ¼»¯Ê±¾Í°ÑyµÄ×îÖÕ
-        //Öµ¸øÁËy£¬ËùÒÔÕâÀïÖ±½Ó½èÓÃ£¬ÔÚºóĞø¸ü
-        //ĞÂÖĞ¾Í½«Ô­À´µÄÖµ¸²¸ÇµôÁË¡£
+        {OLED_HEIGHT, ((UI_MsgBoxArgs *) toast->args)->Y} //è¿™é‡Œæœ‰ç‚¹ç»•ï¼Œå› ä¸ºåˆå§‹åŒ–æ—¶å°±æŠŠyçš„æœ€ç»ˆ
+        //å€¼ç»™äº†yï¼Œæ‰€ä»¥è¿™é‡Œç›´æ¥å€Ÿç”¨ï¼Œåœ¨åç»­æ›´
+        //æ–°ä¸­å°±å°†åŸæ¥çš„å€¼è¦†ç›–æ‰äº†ã€‚
     };
     UIAnimationFunc updateFuncs[] = {jump_in};
 
@@ -211,7 +211,7 @@ uint8_t MsgBox_LoadAppearAnime(UIComponent *toast) {
 }
 
 uint8_t MsgBox_LoadDisappearAnime(UIComponent *box) {
-    // ¶¨Òå¶¯»­ÊôĞÔ
+    // å®šä¹‰åŠ¨ç”»å±æ€§
     int16_t *updateArgs[] = {&(((UI_MsgBoxArgs *) box->args)->Y)};
 
     st_ed_g updateArgSt_Ed[] = {
@@ -240,7 +240,7 @@ uint8_t MsgBox_LoadDisappearAnime(UIComponent *box) {
 
 // uint8_t MsgBox_LoadBounceAnime(UIComponent *box) {
 //     if (!MsgBox_BounceAnime) {
-//         // ¶¨Òå¶¯»­ÊôĞÔ
+//         // å®šä¹‰åŠ¨ç”»å±æ€§
 //         int16_t *updateArgs[] = {&((UI_MsgBoxArgs *) box->args)->Y};
 //
 //         st_ed_g updateArgSt_Ed[] = {
@@ -268,7 +268,7 @@ uint8_t MsgBox_LoadDisappearAnime(UIComponent *box) {
 
 uint8_t MsgBox_LoadBounceAnime(UIComponent *box) {
     if (!MsgBox_BounceAnime) {
-        // ¶¨Òå¶¯»­ÊôĞÔ
+        // å®šä¹‰åŠ¨ç”»å±æ€§
         int16_t *updateArgs[] = {
             &((UI_MsgBoxArgs *) box->args)->X,
             &((UI_MsgBoxArgs *) box->args)->Y,
@@ -306,9 +306,9 @@ uint8_t MsgBox_LoadBounceAnime(UIComponent *box) {
 
 UIComponent *MsgBox_Generate(const char *format, ...) {
     char text[128];
-    va_list arg; //¶¨Òå¿É±ä²ÎÊıÁĞ±íÊı¾İÀàĞÍµÄ±äÁ¿arg
-    va_start(arg, format); //´Óformat¿ªÊ¼£¬½ÓÊÕ²ÎÊıÁĞ±íµ½arg±äÁ¿
-    vsprintf(text, format, arg); //Ê¹ÓÃvsprintf´òÓ¡¸ñÊ½»¯×Ö·û´®ºÍ²ÎÊıÁĞ±íµ½×Ö·ûÊı×éÖĞ
+    va_list arg; //å®šä¹‰å¯å˜å‚æ•°åˆ—è¡¨æ•°æ®ç±»å‹çš„å˜é‡arg
+    va_start(arg, format); //ä»formatå¼€å§‹ï¼Œæ¥æ”¶å‚æ•°åˆ—è¡¨åˆ°argå˜é‡
+    vsprintf(text, format, arg); //ä½¿ç”¨vsprintfæ‰“å°æ ¼å¼åŒ–å­—ç¬¦ä¸²å’Œå‚æ•°åˆ—è¡¨åˆ°å­—ç¬¦æ•°ç»„ä¸­
     va_end(arg);
 
     UIComponent *box = MsgBox_Create(text);
@@ -325,9 +325,9 @@ UIComponent *MsgBox_Generate(const char *format, ...) {
 
 uint8_t MsgBox_UpdateText(UIComponent *box, const char *format, ...) {
     char text[128];
-    va_list arg; //¶¨Òå¿É±ä²ÎÊıÁĞ±íÊı¾İÀàĞÍµÄ±äÁ¿arg
-    va_start(arg, format); //´Óformat¿ªÊ¼£¬½ÓÊÕ²ÎÊıÁĞ±íµ½arg±äÁ¿
-    vsprintf(text, format, arg); //Ê¹ÓÃvsprintf´òÓ¡¸ñÊ½»¯×Ö·û´®ºÍ²ÎÊıÁĞ±íµ½×Ö·ûÊı×éÖĞ
+    va_list arg; //å®šä¹‰å¯å˜å‚æ•°åˆ—è¡¨æ•°æ®ç±»å‹çš„å˜é‡arg
+    va_start(arg, format); //ä»formatå¼€å§‹ï¼Œæ¥æ”¶å‚æ•°åˆ—è¡¨åˆ°argå˜é‡
+    vsprintf(text, format, arg); //ä½¿ç”¨vsprintfæ‰“å°æ ¼å¼åŒ–å­—ç¬¦ä¸²å’Œå‚æ•°åˆ—è¡¨åˆ°å­—ç¬¦æ•°ç»„ä¸­
     va_end(arg);
 
     if (!box) return 0;

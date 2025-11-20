@@ -12,7 +12,7 @@ void cAnime_Destroy(UIComponent *conponent) {
 }
 
 void Anime_Destroy(UIAnimation *anime) {
-    // ÊÍ·Å¶¯»­×ÊÔ´
+    // é‡Šæ”¾åŠ¨ç”»èµ„æº
     if (!anime) return;
     free(anime->UpdateArgs);
     free(anime->UpdateArgSt_Ed);
@@ -24,7 +24,7 @@ void Anime_Destroy(UIAnimation *anime) {
 UIAnimation *Anime_Create(UIComponent *component, uint8_t argNum, int16_t *updateArgsPtr[], int16_t updateArgSt_Ed[][2],
                           UIAnimationFunc updateFuncs[], uint32_t duration, void (*startFunc)(UIComponent *),
                           void (*finishedFunc)(UIComponent *)) {
-    // ·ÖÅä×é¼şÄÚ´æ
+    // åˆ†é…ç»„ä»¶å†…å­˜
     UIAnimation *anime = (UIAnimation *) malloc(sizeof(UIAnimation) * argNum);
     st_ed_g *st_ed = (st_ed_g *) malloc(sizeof(st_ed_g) * argNum);
     int16_t **updateArgs = (int16_t **) malloc(sizeof(int16_t *) * argNum);
@@ -42,7 +42,7 @@ UIAnimation *Anime_Create(UIComponent *component, uint8_t argNum, int16_t *updat
     memcpy(updateArgs, updateArgsPtr, sizeof(int16_t *) * argNum);
     memcpy(func_lst, updateFuncs, sizeof(UIAnimationFunc) * argNum);
 
-    // ÕâÁ½¸öif!¶¼ÊÇÎŞ·¨·ÖÅäÄÚ´æµÄÇé¿ö¡£
+    // è¿™ä¸¤ä¸ªif!éƒ½æ˜¯æ— æ³•åˆ†é…å†…å­˜çš„æƒ…å†µã€‚
     memset(anime, 0, sizeof(UIAnimation));
 
     anime->UpdateArgsNum = argNum;
@@ -61,7 +61,7 @@ float fly_in(float x) {
     if (x >= 1) return 1;
 
     x = x - 1;
-    //    Á¢·½ÇúÏß y = 1+(x-1)^3
+    //    ç«‹æ–¹æ›²çº¿ y = 1+(x-1)^3
 
     return x * x * x + 1;
 }
@@ -70,19 +70,19 @@ float fly_in_sp(float x) {
     if (x >= 1) return 0;
 
     x = x - 1;
-    //    Á¢·½ÇúÏß y = 1+(x-1)^3
+    //    ç«‹æ–¹æ›²çº¿ y = 1+(x-1)^3
 
     return x * x * x + 1;
 }
 
 float jump_in(float x) {
-    //Æ½·½ÇúÏß y = 1-(x-1)^2
+    //å¹³æ–¹æ›²çº¿ y = 1-(x-1)^2
     if (x >= 1) return 1;
     return -1.875 * x * x + 2.875 * x;
 }
 
 float jump_out(float x) {
-    //Æ½·½ÇúÏß y = 1-(x-1)^2
+    //å¹³æ–¹æ›²çº¿ y = 1-(x-1)^2
     if (x >= 1) return 1;
     x = x - 1;
     return 1.875 * x * x + 2.875 * x + 1;
@@ -103,7 +103,7 @@ float shake(float x) {
 }
 
 float bounce(float x) {
-    // return -4 * x * x + 4 * x;  //×óÓÒÆ½ºâµÄ
+    // return -4 * x * x + 4 * x;  //å·¦å³å¹³è¡¡çš„
     if (0 <= x && x <= 0.25) {
         return -16 * x * x + 8 * x;
     } else if (0.25 <= x && x < 1) {

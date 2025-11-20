@@ -39,7 +39,7 @@ int main(void) {
     uint32_t time = 0;
     int a = 0, b = 0, c = 0;
 
-    Toast_Generate("Æô¶¯³É¹¦");
+    Toast_Generate("å¯åŠ¨æˆåŠŸï¼");
     while (1) {
         UI_LoopFunc();
         if(SW_Clicked(0)){

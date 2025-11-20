@@ -8,7 +8,7 @@ typedef struct UIAnimation UIAnimation;
 typedef float (*UIAnimationFunc)(float);
 
 
-// ×é¼ş×´Ì¬
+// ç»„ä»¶çŠ¶æ€
 typedef enum {
     UI_STATE_NORMAL,
     UI_STATE_WAIT_FOR_ANIMATE,
@@ -25,8 +25,8 @@ typedef struct UIKnot{
 typedef struct UIComponent {
     UIKnot base;
     UIComponentState state;
-    void (*draw_func)(struct UIComponent*);       // »æÍ¼º¯Êı
-    void (*destroy_func)(struct UIComponent*);    // Ïú»Ùº¯Êı
+    void (*draw_func)(struct UIComponent*);       // ç»˜å›¾å‡½æ•°
+    void (*destroy_func)(struct UIComponent*);    // é”€æ¯å‡½æ•°
     void* args;
     UIAnimation* animation;
 } UIComponent;
@@ -41,7 +41,7 @@ typedef struct UITask{
 
 
 
-// UI¹ÜÀíÆ÷API
+// UIç®¡ç†å™¨API
 extern void UI_Init();
 extern void UI_RegisterComponent(UIComponent* component);
 extern void UI_RemoveComponent(UIComponent* component);

@@ -7,22 +7,22 @@
 
 #include "stm32f10x.h"
 
-/* ÅäÖÃÊ¹ÓÃÄÄ¸ö¶¨Ê±Æ÷×÷ÎªÊ±»ù */
+/* é…ç½®ä½¿ç”¨å“ªä¸ªå®šæ—¶å™¨ä½œä¸ºæ—¶åŸº */
 #define TICK_TIMER            TIM2
 #define TICK_TIMER_CLK        RCC_APB1Periph_TIM2
 #define TICK_TIMER_IRQn       TIM2_IRQn
 #define TICK_TIMER_IRQHandler TIM2_IRQHandler
 
-// ³õÊ¼»¯ÓëµÎ´ğ»ñÈ¡½Ó¿Ú
+// åˆå§‹åŒ–ä¸æ»´ç­”è·å–æ¥å£
 void Ticker_Init(void);
 uint32_t GetTick(void);
 
-// ĞÂÔöÊ±¼ä¹ÜÀíº¯Êı
+// æ–°å¢æ—¶é—´ç®¡ç†å‡½æ•°
 void Delay_MS(uint32_t ms);
 uint8_t Is_Timeout(uint32_t startTick, uint32_t timeout);
 uint32_t Get_Time_Diff(uint32_t start, uint32_t end);
 
-// UI×é¼şÊÊÅä½Ó¿Ú
+// UIç»„ä»¶é€‚é…æ¥å£
 uint8_t UI_Timer_Check(void* component, uint32_t interval);
 
 #endif // __TICKER_H__
