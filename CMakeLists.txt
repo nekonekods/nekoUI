@@ -41,6 +41,7 @@ file(GLOB_RECURSE CPP_SOURCES
 # 创建一个静态库，包含所有通用源文件
 add_library(lib STATIC ${C_SOURCES}
         UI/config.h
+        User/main.c
 
 )
 

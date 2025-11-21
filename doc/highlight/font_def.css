@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'JetBrainsFont';
+    src: url('JetBrainsFonts/JetBrainsMono-Regular.woff2') format('woff2');
+    font-style: normal;
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'JetBrainsFont';
+    src: url('JetBrainsFonts/JetBrainsMono-Italic.woff2') format('woff2');
+    font-style: Italic;
+    font-weight: normal;
+}
+@font-face {
+    font-family: 'JetBrainsFont';
+    src: url('JetBrainsFonts/JetBrainsMono-Bold.woff2') format('woff2');
+    font-style: normal;
+    font-weight: Bold;
+}
+@font-face {
+    font-family: 'JetBrainsFont';
+    src: url('JetBrainsFonts/JetBrainsMono-BoldItalic.woff2') format('woff2');
+    font-style: Italic;
+    font-weight: Bold;
+}
+
+@font-face {
+    font-family: 'DengX';
+    src: url('Dengb.ttf') format('TrueType');
+    font-style: normal;
+    font-weight: normal;
+}
+

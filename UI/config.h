@@ -14,6 +14,7 @@
 // 定义滴答率 (Hz)
 #define TICK_RATE 100
 
+//消息框MsgBox参数
 // 定义提示框显示时长 (ms)
 #define TOAST_DURATION 2000
 // 定义提示框左右边距 (px)
@@ -30,6 +31,7 @@
 // 定义提示框弹跳动画时长 (ms)
 #define MSGBOX_BOUNCE_ANIME_DURATION 300
 
+//列表List参数
 //列表宽度
 #define LIST_WIDTH 64
 //列表高度

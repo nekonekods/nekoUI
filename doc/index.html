@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="vue.css">
+    <link rel="stylesheet" type="text/css" href="highlight/font_def.css">
+    <link rel="stylesheet" type="text/css" href="highlight/prism.css">
+    <link rel="icon" type="image/png" href="img/icon.png">
+</head>
+<body>
+<div id="app"></div>
+<script>
+    window.$docsify = {
+        repo: 'nekonekods/nekoUI',
+        maxLevel: 3,
+        loadSidebar: true,
+        subMaxLevel: 4,  // 侧边栏最大层级
+        //auto2top: true,  //页面滚动到顶部
+        autoHeader: true,  // 自动生成侧边栏标题
+        name: 'NekoUI',
+        nameLink: './',
+        homepage: 'raw/Core.md',
+        search: {
+            paths: 'auto',
+            placeholder: '🔎搜索',
+            noData: '{{{(＞︿＜)}}}',
+            depth: 3,
+            maxAge: 86400000,
+            hideOtherSidebarContent: true
+        },
+        copyCode: {
+            buttonText: '📋',
+            errorText: '❌',
+            successText: '( •̀ ω •́ )✧'
+        },
+
+        'flexible-alerts': {
+            //style: 'flat'
+        }
+    }
+</script>
+<script src="driver/docsify-copy-code.js"></script>
+<script src="driver/search.min.js"></script>
+<script src="driver/docsify.min.js"></script>
+<script src="driver/docsify-plugin-flexible-alerts.min.js"></script>
+<script src="./highlight/prism-c.min.js"></script>
+<!--<script driver="highlight/json.js"></script>-->
+
+</body>
+</html>
