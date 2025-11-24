@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.29)
 project(untitled4 C CXX)
 
 # 设置C和C++标准
-set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD 11)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 

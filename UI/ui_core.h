@@ -4,6 +4,53 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+
+/**
+ * @defgroup fin_action_group
+ */
+#define DESTROY_WHEN_FIN 1
+#define KEEP_WHEN_FIN 0
+
+#define async_func_def(name,type,arg) \
+void _##name(void *arg); \
+uint8_t __##name##_lock = 0;\
+void name(type arg){ \
+if(__##name##_lock == 1) return;\
+_##name((void*)arg);\
+}\
+void _##name(void *___) {\
+type arg = (type)___;
+
+#define func_start(name) \
+static int16_t state = 0;\
+static UITask* t = 0;\
+switch(state){\
+case 0:\
+t = UI_AddTask(0,_##name,___)
+
+#define async_func_def_end(name,fin)\
+t->finish = fin;\
+__##name##_lock = 0;\
+}}
+
+#define func_wait_if(var)\
+state = __LINE__;\
+return;\
+case __LINE__:\
+if(var) return;
+
+#define func_delay(time)\
+state = __LINE__;\
+t->process_time = GetTick() + time;\
+return;\
+case __LINE__:
+
+#define func_gap()\
+state = __LINE__;\
+return;\
+case __LINE__:
+
+
 typedef struct UIAnimation UIAnimation;
 typedef float (*UIAnimationFunc)(float);
 
